@@ -3,7 +3,8 @@ const Form = ({ inputText, setInputText, todos, setTodos }) => {
 		console.log(event.target.value);
 		setInputText(event.target.value);
 	};
-	const submitToDoHandler = (event) => {
+	//submitHandler function called as onClick event (will only appear onClick)
+	const submitTodoHandler = (event) => {
 		event.preventDefault();
 		setTodos([
 			...todos,
@@ -14,12 +15,12 @@ const Form = ({ inputText, setInputText, todos, setTodos }) => {
 	return (
 		<form>
 			<input 
-				value={inputText} //default value is whatever the setInputText value is on line 12
+				value={inputText} //default value is whatever the setInputText value is on line 13
 				onChange={inputTextHandler}
 				type="text"
 				className="todo-input"
 			/>
-			<button onClick={submitToDoHandler} className="todo-button" type="submit">
+			<button onClick={submitTodoHandler} className="todo-button" type="submit">
 				<i className="fas fa-plus-square" />
 			</button>
 			<div className="select">
