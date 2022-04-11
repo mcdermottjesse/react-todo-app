@@ -5,15 +5,12 @@ const Form = ({ inputText, setInputText, todos, setTodos }) => {
 	//submitHandler function called as onClick event (will only appear onClick)
 	const submitTodoHandler = (event) => {
 		event.preventDefault();
-		setTodos([
-			...todos,
-			{ text: inputText, completed: false, id: (Math.random() * 1000).toFixed(2) }
-		]);
+		setTodos([ ...todos, { text: inputText, completed: false, id: (Math.random() * 1000).toFixed(2) } ]);
 		setInputText(''); //sets state back to nothing
 	};
 	return (
 		<form>
-			<input 
+			<input
 				value={inputText} //default value is whatever the setInputText value is on line 13
 				onChange={inputTextHandler}
 				type="text"
