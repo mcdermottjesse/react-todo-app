@@ -1,7 +1,8 @@
-const Form = () => {
+const Form = ({ setInputText }) => {
 	const inputTextHandler = (event) => {
-		console.log(event.target.value)
-	}
+		console.log(event.target.value);
+		setInputText(event.target.value);
+	};
 	return (
 		<form>
 			<input onChange={inputTextHandler} type="text" className="todo-input" />
