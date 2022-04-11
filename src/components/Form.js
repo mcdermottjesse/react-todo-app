@@ -1,6 +1,5 @@
 const Form = ({ inputText, setInputText, todos, setTodos }) => {
 	const inputTextHandler = (event) => {
-		console.log(event.target.value);
 		setInputText(event.target.value);
 	};
 	//submitHandler function called as onClick event (will only appear onClick)
