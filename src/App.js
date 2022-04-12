@@ -10,11 +10,16 @@ function App() {
 	const [ status, setStatus ] = useState('all'); // "all" is the default filter value
 	const [ filteredTodos, setFilteredTodos ] = useState([]);
 
-	// Effect
-  // Anytime specified state (displayed in brackets line 19) is used useEffect will run chosen function (filterHandler)
+	// Use Effect
+	// Only run once when app starts
+	useEffect(() => {
+		getLocalTodos();
+	}, []);
+	// Anytime specified state (displayed in brackets line 19) is used useEffect will run chosen function (filterHandler)
 	useEffect(
 		() => {
 			filterHandler();
+			saveLocalTodos();
 		},
 		[ todos, status ]
 		// yellow error line wants filterHandler finction above where filterHandler is called
@@ -34,6 +39,20 @@ function App() {
 				break;
 		}
 	};
+	// Save to local
+	const saveLocalTodos = () => {
+		localStorage.setItem('todos', JSON.stringify(todos));
+	};
+
+	const getLocalTodos = () => {
+		if (localStorage.getItem('todos') === null) {
+			localStorage.setItem('todos', JSON.stringify([]));
+		} else {
+			let todoLocal = JSON.parse(localStorage.getItem('todos'));
+			setTodos(todoLocal);
+		}
+	};
+
 	return (
 		<div className="App">
 			<header>
