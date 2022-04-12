@@ -1,10 +1,10 @@
 import Todo from './Todo';
 // { todos } is from the variable within <TodoList /> from App.js
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, setTodos, filteredTodos }) => {
 	return (
 		<div className="todo-container">
 			<ul className="todo-list">
-				{todos.map((todo) => (
+				{filteredTodos.map((todo) => (
 					<Todo
 						todos={todos}
 						setTodos={setTodos}
